@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于我爱折腾、爱篮球">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://l-huan.github.io/about/index.html">
+<meta property="og:site_name" content="chasing&#39;s blog">
+<meta property="og:description" content="关于我爱折腾、爱篮球">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-26T14:14:50.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="关于我爱折腾、爱篮球">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://l-huan.github.io/about/">
+
+
+
+
+
+  <title>python序列模型 | chasing's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chasing's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay hungry. Stay foolish.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l-huan.github.io/2019/01/21/python序列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hliu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chasing's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python序列模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T20:13:42+08:00">2019-01-21</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/21/python序列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/21/python序列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/21/python序列/" class="leancloud_visitors" data-flag-title="python序列模型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">17k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">17 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="序列——-数据模型"><a href="#序列——-数据模型" class="headerlink" title="序列——-数据模型"></a>序列——-数据模型</h1><p>序列按存储元素类型是否一致可分为：<strong>扁平序列</strong>、<strong>容器序列</strong>。</p>
+<ul>
+<li><p>扁平序列：<strong>string(字符串)、array.array(数组)、memoryview(内存视图)、bytes(字节串)、bytearray(字节数组)</strong></p>
+<blockquote>
+<p>扁平序列中所有元素都为同类型数据。</p>
+</blockquote>
+</li>
+<li><p>容器序列：<strong>list(列表)、tuple(元组)、collection.deque(双向队列)</strong></p>
+<blockquote>
+<p>容器序列则可以存储不同类型的数据，但容器序列实际存储的是个元素的引用。支持元素嵌套</p>
+</blockquote>
+</li>
+</ul>
+<p>序列按是否更改又能分为：<strong>可变和不可变序列</strong>。</p>
+<ul>
+<li>可变序列：<strong>list、array.array、bytearray、colloction.deque、memoryview</strong></li>
+<li>不可变序列：<strong>tuple、string、bytes</strong></li>
+</ul>
+<p><strong>字典和集合严格意义上说并不属于序列。</strong>序列即为一系列数据元素有秩序的组合在一起，构成一个整体，是一种组织数据的模型。</p>
+<blockquote>
+<p>python中有序序列如list、tuple、str和range等都支持<strong>双向索引</strong><br>正向索引：从0开始<br>逆向索引：-1代表倒数第一个元素，-2代表代数第二个元素，以此类推</p>
+</blockquote>
+<hr>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ul>
+<li>列表为python内置的可变序列数据结构之一，包含若干==有序连续==的内存空间。</li>
+</ul>
+<blockquote>
+<p>当列表增加或删除元素时，列表对象会自动进行内存的扩展或收缩，以保证元素之间没有缝隙。<br>由于在列表中间插入或删除元素时会涉及大量元素的移动，效率较低，因此尽量从尾部增删元素。<br>==*同一列表中的元素的数据类型可以各不相同==</p>
+<blockquote>
+<p>因为基于值的内存管理机制，列表中元素并不直接存储值，而是存储值的引用（或者说对象的引用）。</p>
+</blockquote>
+</blockquote>
+<h4 id="列表的创建"><a href="#列表的创建" class="headerlink" title="列表的创建"></a>列表的创建</h4><ol>
+<li>list()内置函数</li>
+<li style="list-style: none"><input type="checkbox"> 操作符，各元素之间用逗号隔开</li>
+</ol>
+<h4 id="列表的基本操作"><a href="#列表的基本操作" class="headerlink" title="列表的基本操作"></a>列表的基本操作</h4><ol>
+<li><strong>原地操作</strong>（通常都是list对象自带的行为操作，del命令删除指定位置元素）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lst.append(x)</td>
+<td>在列表lst末尾增加元素X</td>
+</tr>
+<tr>
+<td>lst.extend(lst2)</td>
+<td>在列表lst与lst2合并，==与lst+=lst2效果一样且都是原地操作.<br>但lst=lst+lst2则会改变lst的id值，即lst+lst2返回一个新的列表对象==</td>
+</tr>
+<tr>
+<td>lst.insert(index,x)</td>
+<td>在列表lst指定的index位置插入元素x</td>
+</tr>
+<tr>
+<td>lst.remove(x)</td>
+<td>删除列表lst中元素x</td>
+</tr>
+<tr>
+<td>lst.pop([index])</td>
+<td>返回并删除列表lst指定index位置的元素,<br>默认为列表尾部元素</td>
+</tr>
+<tr>
+<td>lst.clear()</td>
+<td>删除列表lst中所有元素，但保留列表对象，<br>即返回空列表</td>
+</tr>
+<tr>
+<td>lst.index(X)</td>
+<td>返回列表lst中第一个为X的元素的下标</td>
+</tr>
+<tr>
+<td>lst.count(x)</td>
+<td>返回指定元素X在列表lst中出现的次数</td>
+</tr>
+<tr>
+<td>lst.reverse()</td>
+<td>将列表lst逆序，lst发生变化（原地操作）<br>而内置函数reversed(lst)为非原地操作，原lst不变，返回一个新列表</td>
+</tr>
+<tr>
+<td>lst.sort(key=None,reverse=False)</td>
+<td>将lst排序（原地操作）</td>
+</tr>
+<tr>
+<td>lst.copy()</td>
+<td>返回列表lst的==浅复制==</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>浅复制&amp;深复制</strong><br><br>我们寻常意义的复制就是深复制，即将被复制对象完全再复制一遍作为独立的新个体单独存在。所以改变原有被复制对象不会对已经复制出来的新对象产生影响。<br><br><br>浅复制并不会产生一个独立的对象单独存在，他只是将原有的数据块打上一个新标签，所以当其中一个标签被改变的时候，数据块就会发生变化，另一个标签也会随之改变。这就和我们寻常意义上的复制有所不同了。  </p>
+<blockquote>
+<p>对于简单的 object，用 shallow copy 和 deep copy 没区别<br><br><br>复杂的 object,如 list 中套着 list 的情况，shallow copy中的子list，并未从原object 真的「独立」出来。也就是说，如果你改变原 object 的子 list 中的一个元素，你的copy 就会跟着一起变。这跟我们直觉上对「复制」的理解不同。</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><a href="http://python.jobbole.com/82294/" target="_blank" rel="noopener">++对象赋值&amp;shallow copy &amp; deep copy++ 博客链接</a></li>
+<li><p>理解<strong>原子对象</strong>和<strong>容器对象</strong></p>
+<ol start="2">
+<li><p>非原地操作（Python内置函数，运算符+、*等）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x=list(range(10))</span><br><span class="line">&gt;&gt;&gt; y=x                             #x,y指向同一个对象，由id(x),id(y)可以看出</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">&gt;&gt;&gt; id(x)</span><br><span class="line">2568897570056</span><br><span class="line">&gt;&gt;&gt; id(y)</span><br><span class="line">2568897570056</span><br><span class="line">&gt;&gt;&gt; import random</span><br><span class="line">&gt;&gt;&gt; random.shuffle(x)               #随即打乱</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[3, 7, 1, 6, 8, 2, 0, 9, 4, 5]</span><br><span class="line">&gt;&gt;&gt; x is y</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">[3, 7, 1, 6, 8, 2, 0, 9, 4, 5]</span><br><span class="line">&gt;&gt;&gt; x.pop()                         #原地操作</span><br><span class="line">5</span><br><span class="line">&gt;&gt;&gt; id(x)</span><br><span class="line">2568897570056</span><br><span class="line">&gt;&gt;&gt; x.append(258)                   #原地操作</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[3, 7, 1, 6, 8, 2, 0, 9, 4, 258]</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">[3, 7, 1, 6, 8, 2, 0, 9, 4, 258]</span><br><span class="line">&gt;&gt;&gt; id(x)</span><br><span class="line">2568897570056</span><br><span class="line">&gt;&gt;&gt; x.extend([15,51])               #原地操作</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">[3, 7, 1, 6, 8, 2, 0, 9, 4, 258, 15, 51]</span><br><span class="line">&gt;&gt;&gt; id(y)</span><br><span class="line">2568897570056</span><br><span class="line">&gt;&gt;&gt; x.insert(0,&apos;insert&apos;)            #原地操作</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[&apos;insert&apos;, 3, 7, 1, 6, 8, 2, 0, 9, 4, 258, 15, 51]</span><br><span class="line">&gt;&gt;&gt; x.remove(7)                     #原地操作</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[&apos;insert&apos;, 3, 1, 6, 8, 2, 0, 9, 4, 258, 15, 51]</span><br><span class="line">&gt;&gt;&gt; x.reverse()                     #list对象本身自带逆序函数，原地操作</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[51, 15, 258, 4, 9, 0, 2, 8, 6, 1, 3, &apos;insert&apos;]</span><br><span class="line">&gt;&gt;&gt; x.pop()</span><br><span class="line">&apos;insert&apos;</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[51, 15, 258, 4, 9, 0, 2, 8, 6, 1, 3]</span><br><span class="line">&gt;&gt;&gt; x.sort()                        #原地操作</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[0, 1, 2, 3, 4, 6, 8, 9, 15, 51, 258]</span><br><span class="line">&gt;&gt;&gt; reversed(x)                     #内置函数进行逆序，非原地操作，返回新的对象。x不变</span><br><span class="line">&lt;list_reverseiterator object at 0x0000025635387828&gt;</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[0, 1, 2, 3, 4, 6, 8, 9, 15, 51, 258]</span><br><span class="line">&gt;&gt;&gt; sorted(x,reverse=True)          #非原地操作，产生新的列表</span><br><span class="line">[258, 51, 15, 9, 8, 6, 4, 3, 2, 1, 0]</span><br><span class="line">&gt;&gt;&gt; x</span><br><span class="line">[0, 1, 2, 3, 4, 6, 8, 9, 15, 51, 258]</span><br><span class="line">&gt;&gt;&gt; x=x+[1,2]                       #非原地操作（*）</span><br><span class="line">&gt;&gt;&gt; id(x)</span><br><span class="line">2569288051976</span><br><span class="line">&gt;&gt;&gt; id(y)</span><br><span class="line">2568897570056</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">[0, 1, 2, 3, 4, 6, 8, 9, 15, 51, 258]</span><br><span class="line">&gt;&gt;&gt; y+=[1,2]                        #原地操作（与上一语句（*）对比）</span><br><span class="line">&gt;&gt;&gt; y</span><br><span class="line">[0, 1, 2, 3, 4, 6, 8, 9, 15, 51, 258, 1, 2]</span><br><span class="line">&gt;&gt;&gt; id(y)</span><br><span class="line">2568897570056</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>python中内置函数map(),filter(),reduce()等函数是==python函数式编程==的重要体现<br>(reduce()函数在python3中不是内置函数，而是在functools库中)<br></p>
+</blockquote>
+<p>注：下表中的lst不一定是列表，其他可迭代对象均可</p>
+<p>函数 | 功能<br>— | —<br>map.(func,lst) | 返回列表lst中每个元素经过函数func映射后的结果列表，<br>这里的func也可以是lambda函数<br>filter(func,lst) | 将一个单参数函数作用到序列lst上，并返回该序列中使得该函数<br>返回值为True的那些元素组成的filter对象，如果指定函数为None，<br>则返回序列中等价于True的元素所组成的filter对象<br>reduce(func,lst) | 将一个两参数函数以累积方式从左到右依次作用到序列lst上<br>zip(seq1[,sep2[,sep3…]]) | 返回元素为元组的新列表<br>enumerate(seq) | 枚举列表元素，返回enumerate对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=list(range(10))</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">&gt;&gt;&gt; b=list(map(lambda x :chr(x+ord(&apos;A&apos;)),a))</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">[&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;]</span><br><span class="line">&gt;&gt;&gt; list(enumerate(b))</span><br><span class="line">[(0, &apos;A&apos;), (1, &apos;B&apos;), (2, &apos;C&apos;), (3, &apos;D&apos;), (4, &apos;E&apos;), (5, &apos;F&apos;), (6, &apos;G&apos;), (7, &apos;H&apos;), (8, &apos;I&apos;), (9, &apos;J&apos;)]</span><br><span class="line">&gt;&gt;&gt; list(filter(lambda x:x&gt;6,a))</span><br><span class="line">[7, 8, 9]</span><br><span class="line">[x&gt;6 for x in a ]</span><br><span class="line">[False, False, False, False, False, False, False, True, True, True]</span><br><span class="line">&gt;&gt;&gt; from functools import reduce</span><br><span class="line">&gt;&gt;&gt; reduce(lambda i,j:i+j ,a)</span><br><span class="line">45</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h4><ul>
+<li>通过切片获取列表部分元素</li>
+<li>可以通过切片实现删除、更改、增加元素</li>
+<li>通过切片进行浅复制</li>
+</ul>
+<h4 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h4><ul>
+<li><p>[表达式或函数式 for 变量 in 可迭代对象]</p>
+<ol>
+<li>列表推导式结合if语句过滤元素</li>
+<li>列表推导式实现多重循环</li>
+<li>列表推导式实现矩阵转置</li>
+<li>列表推导式内使用函数或复杂表达式</li>
+</ol>
+</li>
+</ul>
+<h2 id="array-array"><a href="#array-array" class="headerlink" title="array.array"></a>array.array</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>array数组类型和C语言中的数组很类似，可以指定数组中存储元素的类型。特点是速度快，可以通过实例方法存储和读取二进制文件。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><hr>
+<h2 id="collection-deque"><a href="#collection-deque" class="headerlink" title="collection.deque"></a>collection.deque</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>列表可以通过pop()方法和append()方法来实现“先进先出”的队列属性，但由于频繁移动元素导致效率不高。deque类型专门对入队出队进行了优化。</p>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><hr>
+<h2 id="元组及具名元组"><a href="#元组及具名元组" class="headerlink" title="元组及具名元组"></a>元组及具名元组</h2><h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><h4 id="元组基本知识"><a href="#元组基本知识" class="headerlink" title="元组基本知识"></a>元组基本知识</h4><blockquote>
+<p>元组为不可变序列，支持切片操作，但只能通过切片来访问元组中的元素。可以将元组看成‘常量列表’。<br>当元组中的元素包含可变序列（如列表）时，情况变得不一样。</p>
+</blockquote>
+<blockquote>
+<p>python对元组内部做了优化，其访问和处理速度比列表更快。而且由于其不可改变的特点通常用来==函数调用时进行参数传递==</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a= (1,2,3)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">(1, 2, 3)</span><br><span class="line">&gt;&gt;&gt; type(a)</span><br><span class="line">&lt;class &apos;tuple&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; b=a[:]</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">(1, 2, 3)</span><br><span class="line">&gt;&gt;&gt; c=(3)           #c=3等价，创建含一个元素的元组如d</span><br><span class="line">&gt;&gt;&gt; c</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; type(c)</span><br><span class="line">&lt;class &apos;int&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; d=(3,)</span><br><span class="line">&gt;&gt;&gt; d</span><br><span class="line">(3,)</span><br><span class="line">&gt;&gt;&gt; type(d)</span><br><span class="line">&lt;class &apos;tuple&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; e=()</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">()</span><br><span class="line">&gt;&gt;&gt; f=tuple()</span><br><span class="line">&gt;&gt;&gt; f</span><br><span class="line">()</span><br><span class="line">&gt;&gt;&gt; g=tuple([1,2,34,5])</span><br><span class="line">&gt;&gt;&gt; g</span><br><span class="line">(1, 2, 34, 5)</span><br></pre></td></tr></table></figure>
+<h4 id="生成器推导式"><a href="#生成器推导式" class="headerlink" title="生成器推导式"></a>生成器推导式</h4><ul>
+<li>格式：（表达式 for 变量 in 序列或迭代对象）</li>
+<li>生成器推导式的结果为一个生成器对象</li>
+</ul>
+<blockquote>
+<p>==生成器对象==：<br>可以使用工厂函数list(),tuple()将其转化为列表或元组，也可以通过生成器对象本身的<strong>next</strong>方法或内置函数next()进行遍历，也可将其直接当做迭代器对象使用。但无论如何遍历或使用，<strong>当所有元素遍历完后，需要重新创建生成器对象才能重新访问其中的元素</strong>。<em>生成器对象的优点是节省内存空间</em></p>
+</blockquote>
+<ul>
+<li>包含yield关键字的函数可以用来创建可迭代的生成器对象</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>尽量不要把可变序列作为元组的元素</li>
+<li>增量赋值不是 <strong>原子操作</strong>，对于可变序列，+=运算符调用–iadd–() 特殊方法，就地操作。而不可变序列则没有–add–()，是通过–add–()方法实现的，此时会创建一个新的对象，完成操作后与原变量关联。</li>
+</ul>
+<hr>
+<h3 id="具名元组"><a href="#具名元组" class="headerlink" title="具名元组"></a>具名元组</h3><p>collection.namedtuple()是一个工厂函数，用来构建带字段名的元组和带名字的类。</p>
+<h4 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h4><hr>
+<h2 id="序列解包"><a href="#序列解包" class="headerlink" title="序列解包"></a>序列解包</h2><ul>
+<li>对多个变量<strong>同时赋值</strong></li>
+<li>同时遍历多个序列</li>
+<li>在实参前加*号可以实现序列解包并在函数调用时进行参数传递</li>
+<li>元组拆包常常用来传递函数参数。</li>
+</ul>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/static/wx_reward_qrcode.png" alt="hliu 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/21/深入理解python/" rel="next" title="深入理解python">
+                <i class="fa fa-chevron-left"></i> 深入理解python
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/21/opencv基本IO操作/" rel="prev" title="opencv基本IO操作">
+                opencv基本IO操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+		<a href="/">
+	              <img class="site-author-image" itemprop="image" src="/static/avatar.png" alt="hliu">
+		</a>
+            
+              <p class="site-author-name" itemprop="name">hliu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/l-huan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/problemset/all/" title="力扣coding" target="_blank">力扣coding</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://language.chinadaily.com.cn/bbc/index.html" title="China daily" target="_blank">China daily</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://language.chinadaily.com.cn/audio_cd/" title="News audio" target="_blank">News audio</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tophub.today/" title="今日热榜" target="_blank">今日热榜</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1349292048&auto=1&height=66">
+	</iframe>	
+
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序列——-数据模型"><span class="nav-number">1.</span> <span class="nav-text">序列——-数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">1.1.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表的创建"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">列表的创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表的基本操作"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">列表的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切片"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表推导式"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">列表推导式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#array-array"><span class="nav-number">1.2.</span> <span class="nav-text">array.array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">1.2.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collection-deque"><span class="nav-number">1.3.</span> <span class="nav-text">collection.deque</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组及具名元组"><span class="nav-number">1.4.</span> <span class="nav-text">元组及具名元组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元组"><span class="nav-number">1.4.1.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元组基本知识"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">元组基本知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器推导式"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">生成器推导式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具名元组"><span class="nav-number">1.4.2.</span> <span class="nav-text">具名元组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列解包"><span class="nav-number">1.5.</span> <span class="nav-text">序列解包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hliu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">37k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点总阅读次数">37 mins.</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<div id="days"></div>
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("01/01/2019 15:13:14");//修改为自己的blog建站时间
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="本站已安全运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Th8K5PvGivXQdfi7j4yzHkc3-gzGzoHsz',
+        appKey: 'VI2vF8wNcUr5KFsoyCuQPNkG',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Th8K5PvGivXQdfi7j4yzHkc3-gzGzoHsz", "VI2vF8wNcUr5KFsoyCuQPNkG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

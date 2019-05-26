@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于我爱折腾、爱篮球">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://l-huan.github.io/about/index.html">
+<meta property="og:site_name" content="chasing&#39;s blog">
+<meta property="og:description" content="关于我爱折腾、爱篮球">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-26T14:14:50.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="关于我爱折腾、爱篮球">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://l-huan.github.io/about/">
+
+
+
+
+
+  <title>深入理解python | chasing's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chasing's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay hungry. Stay foolish.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l-huan.github.io/2019/01/21/深入理解python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hliu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chasing's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深入理解python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T20:13:42+08:00">2019-01-21</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/21/深入理解python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/21/深入理解python/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/21/深入理解python/" class="leancloud_visitors" data-flag-title="深入理解python">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">22k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">22 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="深入理解python"><a href="#深入理解python" class="headerlink" title="深入理解python"></a>深入理解python</h1><p>主要深究一下Python语言编程的内部机理</p>
+<h2 id="变量和对象"><a href="#变量和对象" class="headerlink" title="变量和对象"></a>变量和对象</h2><p>python是完全面向对象的高级编程语言，Python中一切皆为对象：像普通的Python内置数据结构int、list等以及函数都是对象。</p>
+<p>​    变量用于在程序运行中记录信息。既然是记录信息，那么变量势必会占据一定内存大小来存储数据。但是对于python语言而言，变量并不占据存储数据的内存空间。这里牵扯到变量的行为或者称为 <strong>变量语义</strong>。</p>
+<p>​    实际上，存在两种截然不同的变量语义：</p>
+<ul>
+<li><p><strong>值语义和引用语义</strong></p>
+<blockquote>
+<p>在<strong>C语言</strong>中，C变量是值的容器，用于保存相应的数据。变量一经定义就将被分配一定的内存空间，被保存的值不是独立的实体，可以经过赋值进行更改。变量的这种行为就称为 <strong><em>值语义</em></strong>。</p>
+<p>变量采用值语义的这种行为,显然 <strong>变量需要指定类型进行定义</strong>。基于这种语义，变量赋值就是把变量内存储的值进行拷贝。对于结构较大的结构变量（结构体，数组等），如果不希望完全拷贝所有值，C语言提供指针来解决。</p>
+</blockquote>
+<blockquote>
+<p>对于<strong>python</strong>而言，变量并不是值的容器，也就是说变量并不存储值，而是存储着“值”对象的唯一标识。在python中，一切都是对象，所以“值”是各种数据类型的对象实例，是一个独立的实体。把“值”赋值给变量，其实是将变量名关联这个“值”（或者说引用）。这种方式称为 <strong><em>引用语义</em></strong>。</p>
+<p>基于这种方式，Python变量是 <strong>赋值即定义</strong>，使用变量，其实是通过变量来使用与之关联的对象。变量没有类型，但是与变量相关联的对象的类型是确定且必须明确的。<strong>所以Python仍然是强类型语言</strong>。因为Python中各种数据类型都是由类定义的，在类中定义了数据的规范。创建类的对象来存储数据，然后通过变量关联来实现对数据的使用。</p>
+</blockquote>
+</li>
+</ul>
+<p>由于Python变量的这种引用语义，有必要深入了解其 <strong>值共享机制</strong>。</p>
+<h3 id="共享机制"><a href="#共享机制" class="headerlink" title="共享机制"></a>共享机制</h3><ol>
+<li><strong>赋值与共享</strong></li>
+</ol>
+<p><strong>当一个变量给另一个变量赋值时，两个变量关联同一个对象。</strong> 如果这个对象是可变的组合对象（如列表、字典集合等），那么无论通过那个变量对该组合对象进行更改，那么通过另一个变量引用的取值也将随之改变。因为这两个变量关联的是同一个对象。即这两个变量共享这个对象，除非将变量关联到别的对象上，否则两个变量所引用的值永远保持一致。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">"adfag"</span></span><br><span class="line">b = a</span><br><span class="line">c = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">d = c</span><br><span class="line">print(<span class="string">"variableName-type-id:"</span>)</span><br><span class="line">print(<span class="string">"a-"</span>, type(a),<span class="string">"-"</span>, id(a))</span><br><span class="line">print(<span class="string">"b-"</span>, type(b),<span class="string">"-"</span>, id(b))</span><br><span class="line">print(<span class="string">"c-"</span>, type(c),<span class="string">"-"</span>, id(c))</span><br><span class="line">print(<span class="string">"d-"</span>, type(d),<span class="string">"-"</span>, id(d))</span><br><span class="line"></span><br><span class="line">a1 = <span class="string">'sdfn'</span></span><br><span class="line">a2 = <span class="string">'sdfn'</span></span><br><span class="line">print(a1 <span class="keyword">is</span> a2)</span><br><span class="line">print(id(a1), id(a2))</span><br><span class="line">b1 = [<span class="number">23</span>,[<span class="number">2</span>,<span class="number">5</span>]]</span><br><span class="line">b2 = [<span class="number">23</span>,[<span class="number">2</span>,<span class="number">5</span>]]</span><br><span class="line">print(id(b1), id(b2))</span><br><span class="line">print(<span class="string">"element_id"</span>)</span><br><span class="line">print(<span class="string">'['</span>,id(b1[<span class="number">0</span>]), id(b1[<span class="number">1</span>]),<span class="string">'['</span>,id(b1[<span class="number">1</span>][<span class="number">0</span>]),id(b1[<span class="number">1</span>][<span class="number">1</span>]),<span class="string">"]]"</span>)</span><br><span class="line">print(<span class="string">'['</span>,id(b2[<span class="number">0</span>]), id(b2[<span class="number">1</span>]),<span class="string">'['</span>,id(b2[<span class="number">1</span>][<span class="number">0</span>]),id(b2[<span class="number">1</span>][<span class="number">1</span>]),<span class="string">"]]"</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>variableName-type-id:
+a- &lt;class &apos;str&apos;&gt; - 140256053261120
+b- &lt;class &apos;str&apos;&gt; - 140256053261120
+c- &lt;class &apos;list&apos;&gt; - 140256052910600
+d- &lt;class &apos;list&apos;&gt; - 140256052910600
+True
+140256053263696 140256053263696
+140256052910856 140256052911112
+element_id
+[ 93854117399776 140256052910536 [ 93854117399104 93854117399200 ]]
+[ 93854117399776 140256052910920 [ 93854117399104 93854117399200 ]]
+</code></pre><p>从上面运行结果来看，<strong>对于组合对象（对象内元素由多个相同或不同类型的对象组成，这种组合对象相当于一个容器，其存储的是各个元素的引用），即使组合对象元素完全一样，但仍创建了不同的组合对象，而并非两个变量关联同一个组合对象。</strong></p>
+<p>其实要弄懂python的默认共享机制，只需明白一个原则：<strong>python内部机制会尽可能的减少内存开支</strong>。对于嵌套的多层组合对象，python默认操作共享的都是底层独立的对象实体。这种默认的共享机制针对于不可变的非组合对象实例，因此并不会对程序产生不必要的副作用。</p>
+<blockquote>
+<p>上述程序，a1 = ‘sdfn’语句先在内存中创建了一个字符串str类型的对象，按照Python赋值即定义的机制，也定义了变量a1；接着 a2 = ‘sdfn’语句,本来应该在创建一个str类的实例，但Python内部机制会自动共享底层相同的非组合对象实体，所以a1、a2关联同一个str对象实例。但这并不会对程序产生不可预见的错误。</p>
+</blockquote>
+<ol start="2">
+<li><strong>拷贝与共享</strong></li>
+</ol>
+<p>python 中默认的拷贝都为浅拷贝（即只对最上面一层进行拷贝）。比如一个列表，列表中的元素仍是复合数据类型。</p>
+<p>为了便于理解组合类型的共享机制，首先来介绍一下Python内置序列的分类：</p>
+<ul>
+<li><p><strong>按类型分</strong></p>
+<ol>
+<li>容器序列</li>
+</ol>
+<p>像list、tuple和collections.deque等，容器序列的特点是其能存放不同类型的数据。</p>
+<ol start="2">
+<li>扁平序列</li>
+</ol>
+<p>像str、bytes、bytearray、memoryview、array.array、numpy.ndarray等，这类序列只能存放指定的相同类型的数据。</p>
+<p><strong>容器序列由于可以存放不同类型的数据，其实现机制是存放各个数据元素的引用。所以Python默认复制操作只复制最上层的引用。而扁平序列可以看做是一串连续的内存空间。</strong> <em>从宏观角度看，容器序列是由各个相同或不同类型对象组成的组合对象，其元素都是独立的对象实例的引用；扁平序列的元素并不是独立的对象实例。</em></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>按能否修改元素来分</strong></p>
+<ol>
+<li>可变序列</li>
+</ol>
+<p>list、byteattay、collections.deque、memoryview、array.array</p>
+<ol start="2">
+<li>不可变序列</li>
+</ol>
+<p>tuple、str、bytes</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">lst_init = [<span class="string">"af"</span>, (<span class="number">1</span>,<span class="number">2</span>), [<span class="number">2</span>,<span class="number">4</span>,[<span class="number">6</span>,<span class="number">7</span>]], <span class="number">50</span>]</span><br><span class="line">lst_copy = lst_init.copy()   <span class="comment"># 等价于 lst_copy = lst[:]</span></span><br><span class="line">lst_qiep = lst_init[<span class="number">1</span>:]</span><br><span class="line">lst_init_elementId = [id(i) <span class="keyword">for</span> i <span class="keyword">in</span> lst_init]</span><br><span class="line">lst_copy_elementId = [id(i) <span class="keyword">for</span> i <span class="keyword">in</span> lst_copy]</span><br><span class="line">lst_qiep_elementId = [id(i) <span class="keyword">for</span> i <span class="keyword">in</span> lst_qiep]</span><br><span class="line">print(<span class="string">"variableName-value-[id]"</span>)</span><br><span class="line">print(<span class="string">"lst_init-"</span>,lst_init, lst_init_elementId)</span><br><span class="line">print(<span class="string">"lst_copy-"</span>,lst_copy, lst_copy_elementId)</span><br><span class="line">print(<span class="string">"lst_qiep-"</span>,lst_qiep, lst_qiep_elementId)</span><br><span class="line">lst_qiep.append(<span class="string">'af'</span>)</span><br><span class="line">lst_qiep[<span class="number">1</span>][<span class="number">2</span>]=<span class="string">'af'</span></span><br><span class="line">lst_init_elementId_ = [id(i) <span class="keyword">for</span> i <span class="keyword">in</span> lst_init]</span><br><span class="line">lst_copy_elementId_ = [id(i) <span class="keyword">for</span> i <span class="keyword">in</span> lst_copy]</span><br><span class="line">lst_qiep_elementId_ = [id(i) <span class="keyword">for</span> i <span class="keyword">in</span> lst_qiep]</span><br><span class="line">print(<span class="string">"after modify:  variableName-value-[id]"</span>)</span><br><span class="line">print(<span class="string">"lst_init-"</span>,lst_init, lst_init_elementId_)</span><br><span class="line">print(<span class="string">"lst_copy-"</span>,lst_copy, lst_copy_elementId_)</span><br><span class="line">print(<span class="string">"lst_qiep-"</span>,lst_qiep, lst_qiep_elementId_)</span><br><span class="line"></span><br><span class="line">print(id(lst_init[<span class="number">2</span>][<span class="number">2</span>]),id(lst_copy[<span class="number">2</span>][<span class="number">2</span>]), id(lst_qiep[<span class="number">1</span>][<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>variableName-value-[id]
+lst_init- [&apos;af&apos;, (1, 2), [2, 4, [6, 7]], 50] [140256169915872, 140256104558664, 140256054097608, 93854117400640]
+lst_copy- [&apos;af&apos;, (1, 2), [2, 4, [6, 7]], 50] [140256169915872, 140256104558664, 140256054097608, 93854117400640]
+lst_qiep- [(1, 2), [2, 4, [6, 7]], 50] [140256104558664, 140256054097608, 93854117400640]
+after modify:  variableName-value-[id]
+lst_init- [&apos;af&apos;, (1, 2), [2, 4, &apos;af&apos;], 50] [140256169915872, 140256104558664, 140256054097608, 93854117400640]
+lst_copy- [&apos;af&apos;, (1, 2), [2, 4, &apos;af&apos;], 50] [140256169915872, 140256104558664, 140256054097608, 93854117400640]
+lst_qiep- [(1, 2), [2, 4, &apos;af&apos;], 50, &apos;af&apos;] [140256104558664, 140256054097608, 93854117400640, 140256169915872]
+140256169915872 140256169915872 140256169915872
+</code></pre><p>首先，列表lst中存储的都是各个元素数据对象的引用；浅拷贝之后，lst_copy中只是把各个对象的引用拷贝过来，其中所有的元素对象都是共享的。</p>
+<p>从上面运行的结果还发现，python在创建一个对象实例时，会采用尽量减少内存的原则，即最大化的利用共享机制：先检测是否存在一样的对象，如果存在则直接引用，而不会另外创建。上例中的字符串“af”只存在一个对象实体，但却被多次引用，或者说被关联了多个变量。</p>
+<ol start="3">
+<li><strong>函数实参与共享</strong></li>
+</ol>
+<p>在C或C++语言中，如果仅仅采用<strong>值传递</strong>方式进行函数参数传递的话，在函数内部无法改变外部的实参变量的值。除非通过传递指针或者采用C++中的 <strong>引用传递</strong>。而在python中，<strong>函数参数传递时，外部实参和内部形参完全是采用共享机制</strong>。但这需要特别注意：如果实参是可变的组合类型，需要留意函数内部通过形参对可变组合对象的更改。</p>
+<p>还有当函数形参具有默认值，且默认值是可变类型时。要特别注意。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">x = test.pop() * <span class="number">2</span> + test.pop()</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
+<pre><code>11
+</code></pre><h4 id="参数和运算对象的求值顺序"><a href="#参数和运算对象的求值顺序" class="headerlink" title="参数和运算对象的求值顺序"></a>参数和运算对象的求值顺序</h4><p>对于一个表达式而言，有时表达式的求值顺序会对结果产生影响。如上例，表达式从左到右求值，结果为4*2+3；若从右到左求值，结果为3*2+4。这称为<strong>表达式的副作用</strong>。但在Python中明确规定求值顺序为从左到右。对于函数传递参数时，实参列表也是从左到右求值，所以要注意前面的实参求解过程中是否会对后面的实参表达式的值产生影响。</p>
+<h3 id="逻辑判断和是否同一对象"><a href="#逻辑判断和是否同一对象" class="headerlink" title="逻辑判断和是否同一对象"></a>逻辑判断和是否同一对象</h3><p>在python中，空的组合类型（空列表，空集合，空元组，空字符串等）都为假；且对于<strong>空的不可变组合对象</strong>，Python中具有唯一性（即只存在一个None对象，一个空元组对象，一个空冻结集合对象，一个空字符串对象）。所以要注意“==”和“is”之间的区别，前者是比较值，后者判断是否为同一对象。</p>
+<h3 id="变量、函数名、类型——一切皆对象"><a href="#变量、函数名、类型——一切皆对象" class="headerlink" title="变量、函数名、类型——一切皆对象"></a>变量、函数名、类型——一切皆对象</h3><p>在python中，变量、函数名、类型名等完全一样，它们都能记录信息（关联对象），能够通过赋值修改，其实可以将它们统称为变量。赋值语句是给变量关联值的一种机制，被关联的值用表达式描述；def关键字专门用于给变量关联函数对象，此时更愿意称为函数名，但其和变量毫无差别，甚至可以通过赋值将函数名（变量）关联一个表达式的值；class关键字专门用于给变量关联新的类型（定义新类型）。</p>
+<p>但需要说明一下，这里说的完全一样只是在宏观上的表象，因为变量、函数名、类型名（或者统称为变量）只是一个名字或者说标识（理解成C++里的引用），只是为了方便使用与其关联的对象。但是对于不用对象的操作肯定不同，比如：global、nonlocal关键字能将变量声明为全局变量和非局部变量，但却不能声明函数或类型为全局或非局部。根本原因是<strong>操作都是针对于变量所关联的对象</strong>。</p>
+<h2 id="程序语义实现"><a href="#程序语义实现" class="headerlink" title="程序语义实现"></a>程序语义实现</h2><p>程序运行主要靠<strong><em>环境</em></strong>和<strong><em>状态</em></strong>的变化实现。</p>
+<ul>
+<li>环境可以理解为程序运时某一阶段的所有变量（包括函数和类型）</li>
+<li>状态则是某一阶段所有变量所关联的对象的值的情况</li>
+</ul>
+<h3 id="程序执行中环境和状态的变化"><a href="#程序执行中环境和状态的变化" class="headerlink" title="程序执行中环境和状态的变化"></a>程序执行中环境和状态的变化</h3><ul>
+<li><strong>名字空间</strong></li>
+</ul>
+<p>Python解释器启动时，其自动创建的内置初始环境中含有一个<strong>内置名字空间</strong>。里面记录着Python内置的标准类型，标准函数，标准常量，各种异常名。之后会再建立一个<strong>全局名字空间</strong>作为当前的名字空间。内置名字空间是全局名字空间的<strong>外围名字空间</strong>。</p>
+<p>在程序中定义函数或声明变量等其他能改变环境的操作默认只对当前名字空间产生作用。除非有global、nonlocal关键字声明。<strong><em>程序执行到调用函数语句时，会为函数创建一个局部名字空间，函数定义所在的名字空间为该名字空间的外围名字空间。（名字空间逐层嵌套）。若调用递归函数，则会创建多个局部名字空间，这些局部名字空间都以递归函数定义所在名字空间为外围名字空间。</em></strong></p>
+<p>当函数调用执行完成后，创建的函数局部名字空间将被删除。（<strong>对于生成器函数和工厂函数（函数闭包）而言，由于其特殊的工作原理，其局部名字空间在函数调用结束后并不会立即删除。具体原理见后续</strong>）程序运行时，默认情况下（无global、nonlocal关键字声明）总是先在当前名字空间里查找变量名，在当前名字空间里查找不到时逐层往外查找。</p>
+<blockquote>
+<p><strong>对于global声明，程序运行到函数体内，以为函数创建的局部名字空间为当前名字空间，被global声明的变量直接被加到全局名字空间内，使用该变量时直接在全局名字空间里查找。当global声明的变量在函数外没有定义，global语句默认会自动将其加到全局名字空间</strong></p>
+<p><strong>对于nonlocal声明（非局部变量声明），使用非局部变量时，解释器直接从当前名字空间的直接外围名字空间（非全局名字空间）查找，若查找不到，再逐层往外围的非全局名字空间进行查找。外围非全局名字空间逐层都未找到就会报错，报错只发生在该变量没有定义或只在全局名字空间里定义了。</strong></p>
+</blockquote>
+<p>由于python赋值即定义的特性，在局部函数内，若不通过global或nonlocal声明，在函数内部无法改变其外围名字空间里的变量值。但是可以使用外围名字空间里的变量，因为变量作用域一般都是像内层嵌套的作用域进行延伸的。</p>
+<p>在者需要注意的是，在执行函数调用时，python解释器首先会根据函数体（赋值语句）为该函数创建局部名字空间。然后再一条一条的执行函数体内的语句。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">g1 = <span class="number">3</span></span><br><span class="line">g2 = [<span class="number">2</span>,<span class="number">4</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a)</span>:</span></span><br><span class="line">    localV = a + <span class="number">10</span></span><br><span class="line">    g2.append(a)</span><br><span class="line">    <span class="keyword">return</span> localV</span><br><span class="line">g1 = func(g1)</span><br><span class="line">print(g1,g2)</span><br><span class="line">print(dir())</span><br></pre></td></tr></table></figure>
+<pre><code>13 [2, 4, 3]
+[&apos;In&apos;, &apos;Out&apos;, &apos;_&apos;, &apos;__&apos;, &apos;___&apos;, &apos;__builtin__&apos;, &apos;__builtins__&apos;, &apos;__doc__&apos;, &apos;__loader__&apos;, &apos;__name__&apos;, &apos;__package__&apos;, &apos;__spec__&apos;, &apos;_dh&apos;, &apos;_i&apos;, &apos;_i1&apos;, &apos;_i10&apos;, &apos;_i11&apos;, &apos;_i12&apos;, &apos;_i13&apos;, &apos;_i14&apos;, &apos;_i15&apos;, &apos;_i16&apos;, &apos;_i17&apos;, &apos;_i18&apos;, &apos;_i19&apos;, &apos;_i2&apos;, &apos;_i20&apos;, &apos;_i21&apos;, &apos;_i3&apos;, &apos;_i4&apos;, &apos;_i5&apos;, &apos;_i6&apos;, &apos;_i7&apos;, &apos;_i8&apos;, &apos;_i9&apos;, &apos;_ih&apos;, &apos;_ii&apos;, &apos;_iii&apos;, &apos;_oh&apos;, &apos;bibao_fibonaqi&apos;, &apos;count&apos;, &apos;exit&apos;, &apos;fibonaqi&apos;, &apos;fibonaqi_&apos;, &apos;func&apos;, &apos;g&apos;, &apos;g1&apos;, &apos;g2&apos;, &apos;gen_fibonaqi&apos;, &apos;get_ipython&apos;, &apos;i&apos;, &apos;quit&apos;, &apos;result&apos;, &apos;x&apos;]
+</code></pre><h3 id="生成器和函数闭包"><a href="#生成器和函数闭包" class="headerlink" title="生成器和函数闭包"></a>生成器和函数闭包</h3><p>生成器函数和闭包函数（工厂函数）都是特殊的函数。特殊就特殊在其工作机制上，普通函数调用时，解释器会创建一个局部名字空间，函数调用结束，该局部名字空间便会自动回收；但生成器函数和闭包函数则不然：</p>
+<h4 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h4><p>函数体里包含yield语句。yield语句有两种形式：</p>
+<ul>
+<li><strong>yield 表达式</strong>    <em>#直接返回表达式的值</em></li>
+<li><strong>yield from <em>subiterator</em></strong>     <em>#从子迭代器subiterator逐个返回值</em></li>
+</ul>
+<p><strong>调用生成器函数，返回的是一个生成器对象。生成器对象属于迭代器。</strong></p>
+<ul>
+<li><strong>迭代器对象</strong>：能执行next()操作的对象都称为迭代器对象。像range、map、filter等内置函数的返回值</li>
+<li><strong>可迭代对象</strong>：能在for语句中逐个迭代的对象。像列表、元组等</li>
+</ul>
+<h5 id="生成器运行原理"><a href="#生成器运行原理" class="headerlink" title="生成器运行原理"></a>生成器运行原理</h5><p>生成器对象可以理解成一种数据抽象（具有内部状态，内部实现方式屏蔽，具有抽象行为），生成器对象存储的是生成数据的规则，并不存储具体数据。利用生成器函数产生的生成器对象在使用时（生成器对象的使用归根结底就是向其索要下一个值，例如用于for语句或next()函数），当向生成器对象索要下一个值时，该对象就会执行生成器函数体代码，直到yield语句返回下一个值，函数体在下一次求值是从上一次yield返回值处继续执行。在该生成器对象没有被释放之前，保存其内部状态（执行到何处等）的名字空间并不会被解释器回收。<strong>当生成器对象在执行函数体时遇到return语句或执行完所有函数体（即生成器对象的所有值都被求出）时，会引发stopIteration异常，该异常会使得for循环结束。</strong></p>
+<p>生成器对象归根结底是生成器类型的实例，可以调用类的实例方法gen.send()、gen.throw()、gen.close()。</p>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包是一种编程技术。因为其返回值是一个函数，又称为工厂函数。</p>
+<p>基本结构：定义一个闭包函数f，其中定义若干局部变量构成f的局部状态，在f里定义一个使用<strong>非局部状态</strong>的局部函数（<strong>该函数依赖于调用f时创建的名字空间</strong>），调用f，建立f的局部作用域后返回局部函数，实际返回的是一个闭包。函数f被称为工厂函数，每次调用f都会返回一个新闭包。</p>
+<p>返回闭包是通过返回<strong>闭包二元组</strong>来实现的，闭包二元组逻辑上表现为(闭包函数内部定义生成的函数对象，本次调用闭包函数所创建的名字空间)。即调用闭包函数返回值不仅包括生成的函数对象，还包含生成此函数对象时的内部状态。虽然在闭包函数里的函数定义代码是固定不变的，但由于每次调用闭包函数都会创建新的名字空间，因此返回的闭包二元组不同，从而使得每次调用闭包函数返回的函数闭包都不同。</p>
+<p>下面分别用生成器和闭包实现斐波那契数列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibonaqi</span><span class="params">(limit)</span>:</span></span><br><span class="line">    f0, f1 = <span class="number">0</span>,<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(limit):</span><br><span class="line">        <span class="keyword">yield</span> f1</span><br><span class="line">        f0, f1 = f1, f0 + f1</span><br><span class="line">        </span><br><span class="line">gen_fibonaqi = fibonaqi(<span class="number">10</span>)</span><br><span class="line">print(type(gen_fibonaqi))</span><br><span class="line">print(list(gen_fibonaqi))</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;generator&apos;&gt;
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibonaqi_</span><span class="params">(limit)</span>:</span></span><br><span class="line">    f0, f1 = <span class="number">0</span>,<span class="number">1</span></span><br><span class="line">    count = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> count, f0, f1</span><br><span class="line">        <span class="keyword">while</span> count &lt;= limit:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">            f0, f1 = f1, f0 + f1</span><br><span class="line">            <span class="keyword">return</span> f0</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> gen</span><br><span class="line"></span><br><span class="line">bibao_fibonaqi = fibonaqi_(<span class="number">10</span>)</span><br><span class="line">result = []</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    x = bibao_fibonaqi()</span><br><span class="line">    <span class="keyword">if</span> x:</span><br><span class="line">        result.append(x)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">print(type(bibao_fibonaqi))</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;function&apos;&gt;
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/static/wx_reward_qrcode.png" alt="hliu 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/20/git学习笔记/" rel="next" title="git学习笔记">
+                <i class="fa fa-chevron-left"></i> git学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/21/python序列/" rel="prev" title="python序列模型">
+                python序列模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+		<a href="/">
+	              <img class="site-author-image" itemprop="image" src="/static/avatar.png" alt="hliu">
+		</a>
+            
+              <p class="site-author-name" itemprop="name">hliu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/l-huan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/problemset/all/" title="力扣coding" target="_blank">力扣coding</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://language.chinadaily.com.cn/bbc/index.html" title="China daily" target="_blank">China daily</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://language.chinadaily.com.cn/audio_cd/" title="News audio" target="_blank">News audio</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tophub.today/" title="今日热榜" target="_blank">今日热榜</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1349292048&auto=1&height=66">
+	</iframe>	
+
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深入理解python"><span class="nav-number">1.</span> <span class="nav-text">深入理解python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量和对象"><span class="nav-number">1.1.</span> <span class="nav-text">变量和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#共享机制"><span class="nav-number">1.1.1.</span> <span class="nav-text">共享机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数和运算对象的求值顺序"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">参数和运算对象的求值顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑判断和是否同一对象"><span class="nav-number">1.1.2.</span> <span class="nav-text">逻辑判断和是否同一对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量、函数名、类型——一切皆对象"><span class="nav-number">1.1.3.</span> <span class="nav-text">变量、函数名、类型——一切皆对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序语义实现"><span class="nav-number">1.2.</span> <span class="nav-text">程序语义实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序执行中环境和状态的变化"><span class="nav-number">1.2.1.</span> <span class="nav-text">程序执行中环境和状态的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器和函数闭包"><span class="nav-number">1.2.2.</span> <span class="nav-text">生成器和函数闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器函数"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">生成器函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#生成器运行原理"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">生成器运行原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">闭包</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hliu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">37k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点总阅读次数">37 mins.</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<div id="days"></div>
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("01/01/2019 15:13:14");//修改为自己的blog建站时间
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="本站已安全运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Th8K5PvGivXQdfi7j4yzHkc3-gzGzoHsz',
+        appKey: 'VI2vF8wNcUr5KFsoyCuQPNkG',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Th8K5PvGivXQdfi7j4yzHkc3-gzGzoHsz", "VI2vF8wNcUr5KFsoyCuQPNkG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

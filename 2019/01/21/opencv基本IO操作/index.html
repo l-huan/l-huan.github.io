@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于我爱折腾、爱篮球">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://l-huan.github.io/about/index.html">
+<meta property="og:site_name" content="chasing&#39;s blog">
+<meta property="og:description" content="关于我爱折腾、爱篮球">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-26T14:14:50.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="关于我爱折腾、爱篮球">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://l-huan.github.io/about/">
+
+
+
+
+
+  <title>opencv基本IO操作 | chasing's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chasing's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay hungry. Stay foolish.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://l-huan.github.io/2019/01/21/opencv基本IO操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hliu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/static/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chasing's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">opencv基本IO操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T20:13:42+08:00">2019-01-21</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/opencv/" itemprop="url" rel="index">
+                    <span itemprop="name">opencv</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/21/opencv基本IO操作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/21/opencv基本IO操作/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/01/21/opencv基本IO操作/" class="leancloud_visitors" data-flag-title="opencv基本IO操作">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">32k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">32 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="图像读写及窗口显示"><a href="#图像读写及窗口显示" class="headerlink" title="图像读写及窗口显示"></a>图像读写及窗口显示</h2><ul>
+<li>opencv的 imread() 和 imwrite() 函数支持各种静态图像文件格式。</li>
+</ul>
+<p><a href="https://docs.opencv.org/3.4.3/dc/d2e/tutorial_py_image_display.html" target="_blank" rel="noopener">官方文档参考</a></p>
+<p><strong><em>注：opencv的大部分常用函数都包含在cv2模块中，cv2模块并不意味这是opencv 2.x.x版本。截止到2018年opencv版本已经发布到4.x.x版本了。本笔记所使用的是opencv3.x.x版本。</em></strong></p>
+<h4 id="cv2-imread"><a href="#cv2-imread" class="headerlink" title="cv2.imread()"></a>cv2.imread()</h4><ul>
+<li><p><em>args</em>:</p>
+<ul>
+<li><strong>file_path:</strong> 文件路径（相对路径或绝对路径）</li>
+<li><strong>int flag:</strong> 指定图像的读取方式，cv2模块提供了各种图像读取方式的常量：</li>
+</ul>
+<blockquote>
+<p>cv2.IMREAD_COLOR = 1 : 加载彩色图像。图像的任何透明度都会被忽略。它是默认值。<br><br>cv2.IMREAD_GRAYSCALE = 0 : 加载灰度图像<br><br>cv2.IMREAD_UNCHANGED = -1 : 按原样加载图像，包括alpha通道(透明度信息)</p>
+</blockquote>
+</li>
+<li><p><em>return</em>:<br>返回一份ndarray数组（默认返回的是三通道的三维数组，因为默认图像读取方式为彩色rgb图像）</p>
+</li>
+</ul>
+<p><strong>note</strong>:<br>​      - 在彩色图像的情况下，解码后的图像将以bgr顺序存储通道。<br>​      - 该函数根据内容而不是文件扩展名确定图像的类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">rgbimg = cv2.imread(<span class="string">"img_example/image0.jpg"</span>)</span><br><span class="line">grayimg = cv2.imread(<span class="string">"img_example/image0.jpg"</span>, cv2.IMREAD_GRAYSCALE) <span class="comment">#或者直接传递参数0</span></span><br><span class="line">grayimg_ = cv2.imread(<span class="string">"img_example/image0.jpg"</span>, <span class="number">0</span>)</span><br><span class="line">print(grayimg.shape)</span><br><span class="line">print(grayimg_.shape)</span><br><span class="line">print(rgbimg.shape)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(28, 28)</span><br><span class="line">(28, 28)</span><br><span class="line">(28, 28, 3)</span><br></pre></td></tr></table></figure>
+<h4 id="cv2-imwrite"><a href="#cv2-imwrite" class="headerlink" title="cv2.imwrite()"></a>cv2.imwrite()</h4><p><a href="https://docs.opencv.org/3.4.3/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce" target="_blank" rel="noopener">官方文档参考</a></p>
+<ul>
+<li>args:<ul>
+<li>save_path: 保存图像的路径<br></li>
+<li>image: 需要保存为图片的ndarray数组</li>
+</ul>
+</li>
+<li>return:<ul>
+<li>布尔值表示图像存储是否成功</li>
+</ul>
+</li>
+</ul>
+<p>该函数要求图像为RGB或灰度格式（即image为uint8的二维或三维ndarray数组）</p>
+<h4 id="cv2-imshow"><a href="#cv2-imshow" class="headerlink" title="cv2.imshow()"></a>cv2.imshow()</h4><p>生成一个GUI窗口显示图像。</p>
+<ul>
+<li><em>args</em>:<ul>
+<li>window_name: GUI窗口名称<br></li>
+<li>ndarry: 要显示的图片数组</li>
+</ul>
+</li>
+</ul>
+<p>若单纯的只用imshow()来显示图像，那么该显示图像的窗口将会一闪而过。<br>opencv显示图片通常需要和 <strong>cv2.waitKey()</strong> 函数和 <strong>cv2.destroyAllWindows()</strong> 函数配合使用。</p>
+<h4 id="cv2-waitKey"><a href="#cv2-waitKey" class="headerlink" title="cv2.waitKey()"></a>cv2.waitKey()</h4><p>函数参数为等待键盘触发的时间，单位为毫秒，参数为0表示一直等待按键输入；其返回值是-1(表示在等待时间内没有按键触发)。当有按键触发时，返回值为ASCII码。<br>​    </p>
+<blockquote>
+<p><strong><em>opencv的窗口函数和waitKey()函数相互依赖。opencv的窗口只有在调用waitkey()函数时才会更新，waitKey()函数只有在opencv窗口成为活动窗口时，才能捕获输入信息。</em></strong></p>
+</blockquote>
+<h4 id="cv2-destroyAllWindows"><a href="#cv2-destroyAllWindows" class="headerlink" title="cv2.destroyAllWindows()"></a>cv2.destroyAllWindows()</h4><p>该函数将关闭所有打开的GUI窗口。<br>​<br>还能使用Matplotlib绘图库来显示图片。<a href="https://blog.csdn.net/u014630987/article/details/76713814" target="_blank" rel="noopener">详见</a></p>
+<p><a href="https://docs.opencv.org/3.4.3/dc/d2e/tutorial_py_image_display.html" target="_blank" rel="noopener">matplotlib官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">"img_example/a.jpg"</span>)</span><br><span class="line">cv2.imshow(<span class="string">"test"</span>, img)</span><br><span class="line">k = cv2.waitKey(<span class="number">10000</span>) &amp; <span class="number">0xFF</span>   <span class="comment"># 64位机</span></span><br><span class="line"><span class="keyword">if</span> k == <span class="number">27</span>:         <span class="comment"># wait for ESC key to exit</span></span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"><span class="keyword">elif</span> k == ord(<span class="string">'s'</span>): <span class="comment"># wait for 's' key to save and exit</span></span><br><span class="line">    cv2.imwrite(<span class="string">'a.png'</span>,img)</span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"><span class="keyword">elif</span> k == <span class="number">-1</span> &amp; <span class="number">0xff</span>:  <span class="comment">#在10000毫秒等待时间内无按键触发</span></span><br><span class="line">    print(<span class="string">"no key is pushed"</span>)</span><br><span class="line">    cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">no key is pushed</span><br></pre></td></tr></table></figure>
+<p>pillow图像处理库是python最基本的图像库。</p>
+<p><a href="https://blog.csdn.net/u013010889/article/details/54347089" target="_blank" rel="noopener">OpenCV、Skimage、PIL图像处理的细节差异</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">grag_img = Image.open(<span class="string">"img_example/image0.jpg"</span>)</span><br><span class="line">print(type(grag_img))</span><br><span class="line">grag_img.show()</span><br><span class="line">print(grag_img)</span><br><span class="line">print(grag_img.size)</span><br><span class="line">print(grag_img.mode)</span><br><span class="line">a = np.array(grag_img)</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.dtype)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;class &apos;PIL.JpegImagePlugin.JpegImageFile&apos;&gt;</span><br><span class="line">&lt;PIL.JpegImagePlugin.JpegImageFile image mode=L size=28x28 at 0x7F25D68931D0&gt;</span><br><span class="line">(28, 28)</span><br><span class="line">L</span><br><span class="line">(28, 28)</span><br><span class="line">uint8</span><br></pre></td></tr></table></figure>
+<h2 id="视频文件读写及帧显示"><a href="#视频文件读写及帧显示" class="headerlink" title="视频文件读写及帧显示"></a>视频文件读写及帧显示</h2><p>opencv读写视频是通过VideoCapture类和VideoWrite类来实现的。</p>
+<h3 id="VideoCapture类"><a href="#VideoCapture类" class="headerlink" title="VideoCapture类"></a>VideoCapture类</h3><p>   <a href="https://docs.opencv.org/3.4.3/d8/dfe/classcv_1_1VideoCapture.html" target="_blank" rel="noopener">参考文档</a></p>
+<h4 id="cv2-VideoCapture-cv2-VideoCapture-filepath-cv2-VideoCapture-filepath-apiPreference-cv2-VideoCapture-index"><a href="#cv2-VideoCapture-cv2-VideoCapture-filepath-cv2-VideoCapture-filepath-apiPreference-cv2-VideoCapture-index" class="headerlink" title="cv2.VideoCapture()  cv2.VideoCapture(filepath) cv2.VideoCapture(filepath, apiPreference) cv2.VideoCapture(index)"></a>cv2.VideoCapture() <br> cv2.VideoCapture(filepath) <br>cv2.VideoCapture(filepath, apiPreference)<br> cv2.VideoCapture(index)</h4><p>重载的videocapture类构造函数。<br>​<br>​    当类构造函数无任何参数时，只声明一个videocapture类的实例。然后可以通过open()类方法来初始化或重新初始化（打开视频文件或摄像头设备）。</p>
+<ul>
+<li><p>args:</p>
+<ul>
+<li>filepath: 视频文件的路径</li>
+<li>apiPreference： 指定后端api库，用于执行特定的阅读器实现。 <a href="https://docs.opencv.org/3.4.3/d4/d15/group__videoio__flags__base.html#ga023786be1ee68a9105bf2e48c700294d" target="_blank" rel="noopener">后端api参考</a><br>opencv提供一下VideoCapture API后端标识符：<ul>
+<li><strong>cv2.CAP_FFMPEG</strong></li>
+<li><strong>cv2.CAP_IMAGES</strong></li>
+<li><strong>cv2.CAP_DSHOW</strong></li>
+</ul>
+</li>
+<li>index: 摄像头的设备索引号。笔记本默认摄像头编号0（或-1）。</li>
+</ul>
+<blockquote>
+<p>有时，VideoCapture可能没有初始化捕获。在这种情况下，代码显示错误。您可以通过方法VideoCapture.isopen()检查它是否初始化。可以使用VideoCapture.open()打开它。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="cv2-VideoCapture-release"><a href="#cv2-VideoCapture-release" class="headerlink" title="cv2.VideoCapture.release()"></a>cv2.VideoCapture.release()</h4><p>关闭视频文件或捕获设备</p>
+<pre><code>无需参数，返回值为None
+</code></pre><blockquote>
+<p>当声明videocapture类并打开视频文件或捕获设备，最后都要调用release()方法关闭视频文件或捕获设备。</p>
+</blockquote>
+<h4 id="cv2-VideoCapture-open-filename-cv2-VideoCapture-open-filename-apiPreference-cv2-VideoCapture-open-index"><a href="#cv2-VideoCapture-open-filename-cv2-VideoCapture-open-filename-apiPreference-cv2-VideoCapture-open-index" class="headerlink" title="cv2.VideoCapture.open(filename)  cv2.VideoCapture.open(filename, apiPreference)  cv2.VideoCapture.open(index)"></a>cv2.VideoCapture.open(filename) <br> cv2.VideoCapture.open(filename, apiPreference) <br> cv2.VideoCapture.open(index)</h4><p>函数重载；打开视频文件或捕获设备，用于视频捕获的videocapture类<br>​    </p>
+<ul>
+<li><p>args：参考videocapture类构造函数</p>
+</li>
+<li><p>return：布尔值。如果文件或设备打开正常，则返回true</p>
+<blockquote>
+<p>cv2.VideoCapture.open()方法首先调用VideoCapture.release()关闭已经打开的文件或相机。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="cv2-VideoCapture-isOpened"><a href="#cv2-VideoCapture-isOpened" class="headerlink" title="cv2.VideoCapture.isOpened()"></a>cv2.VideoCapture.isOpened()</h4><p>用于检测videocapture类实例是否初始化（视频文件或设备正确打开）</p>
+<ul>
+<li>args: 无</li>
+<li>return：布尔值。如果之前对VideoCapture构造函数或VideoCapture.open的调用成功，该方法返回true。</li>
+</ul>
+<h4 id="cv2-VideoCapture-read"><a href="#cv2-VideoCapture-read" class="headerlink" title="cv2.VideoCapture.read()"></a>cv2.VideoCapture.read()</h4><p>抓取、解码并返回下一个视频帧。</p>
+<ul>
+<li><p>args:</p>
+<ul>
+<li>无参数</li>
+</ul>
+</li>
+<li><p>return：</p>
+<ul>
+<li>布尔类型返回值：表示视频帧读取的状态。<br></li>
+<li>image：读取的视频帧。类型为ndarray数组</li>
+</ul>
+<p>如果没有抓取帧(相机已经断开连接，或者视频文件中没有更多的帧)，方法第一个返回值为false，第二个返回值为None。</p>
+</li>
+</ul>
+<h4 id="cv2-VideoCapture-grab-和-cv2-VideoCapture-retrive"><a href="#cv2-VideoCapture-grab-和-cv2-VideoCapture-retrive" class="headerlink" title="cv2.VideoCapture.grab() 和 cv2.VideoCapture.retrive()"></a>cv2.VideoCapture.grab() 和 cv2.VideoCapture.retrive()</h4><p>当需要同步一组摄像头或一个多头摄像头（如立体摄像头）时，read()方法不在适用。</p>
+<pre><code>两个函数都无需参数；grab()返回布尔值表示抓取的状态，retrive()返回值和read()一致
+</code></pre><blockquote>
+<p>该功能的主要用途是在多摄像机环境中，特别是在摄像机没有硬件同步的情况下。也就是说，对每个相机调用VideoCapture.grab()，然后调用较慢的方法VideoCapture.retrieve()对每个相机进行解码并获取帧。通过这种方法，消除了解码或运动jpeg解压等开销，使从不同相机检索到的帧更接近。</p>
+</blockquote>
+<blockquote>
+<p>另外，当连接的摄像头为多头摄像头(如立体摄像头或Kinect设备)时，从摄像头中获取数据的正确方法是先调用VideoCapture.grab，然后调用VideoCapture.retrieve()，使用不同的通道参数值进行一次或多次调用。</p>
+</blockquote>
+<h4 id="cv2-VideoCapture-get-propId"><a href="#cv2-VideoCapture-get-propId" class="headerlink" title="cv2.VideoCapture.get(propId)"></a>cv2.VideoCapture.get(propId)</h4><p>用于获取指定的VideoCapture属性（property）</p>
+<ul>
+<li>args:<ul>
+<li>propld: 属性标识符。它可以是下列等等: <a href="https://docs.opencv.org/3.4.3/d4/d15/group__videoio__flags__base.html#ggaeb8dd9c89c10a5c63c139bf7c4f5704dab26d2ba37086662261148e9fe93eecad" target="_blank" rel="noopener">参考文档</a><ol>
+<li><strong>CV2.CAP_PROP_FRAME_WIDTH</strong> Width of the frames in the video stream.</li>
+<li><strong>CV2.CAP_PROP_FRAME_HEIGHT</strong> Height of the frames in the video stream.</li>
+<li><strong>CV2.CAP_PROP_FPS</strong> Frame rate.</li>
+<li><strong>CV2.CAP_PROP_FOURCC</strong> 4-character code of codec.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="cv2-VideoCapture-set-propId-value"><a href="#cv2-VideoCapture-set-propId-value" class="headerlink" title="cv2.VideoCapture.set(propId, value)"></a>cv2.VideoCapture.set(propId, value)</h4><p>设置videocapture实例的属性</p>
+<ul>
+<li>args：<ul>
+<li>propld: 属性标识符。同见<a href="https://docs.opencv.org/3.4.3/d4/d15/group__videoio__flags__base.html#ggaeb8dd9c89c10a5c63c139bf7c4f5704dab26d2ba37086662261148e9fe93eecad" target="_blank" rel="noopener">参考文档</a><br></li>
+<li>value: 属性值</li>
+</ul>
+</li>
+</ul>
+<h3 id="videoWriter类"><a href="#videoWriter类" class="headerlink" title="videoWriter类"></a>videoWriter类</h3><h4 id="cv2-VideoWriter-cv2-VideoWriter-filename-fourcc-fps-frameSize-isColor-cv2-VideoWriter-filename-apiPreference-fourcc-fps-frameSize-isColor"><a href="#cv2-VideoWriter-cv2-VideoWriter-filename-fourcc-fps-frameSize-isColor-cv2-VideoWriter-filename-apiPreference-fourcc-fps-frameSize-isColor" class="headerlink" title="cv2.VideoWriter()   cv2.VideoWriter( filename, fourcc, fps, frameSize [, isColor] )  cv2.VideoWriter( filename, apiPreference, fourcc, fps, frameSize [, isColor] )"></a>cv2.VideoWriter()  <br> cv2.VideoWriter( filename, fourcc, fps, frameSize [, isColor] ) <br> cv2.VideoWriter( filename, apiPreference, fourcc, fps, frameSize [, isColor] )</h4><p>重载的videowrite类构造函数。<br>当函数无任何参数时，只声明一个videoWrite类实例，随后可以通过open()类方法来初始化或重新初始化videoWrite实例。<br>​    </p>
+<ul>
+<li>args：<ul>
+<li>filename: 文件存储路径</li>
+<li>fourcc: 用于压缩帧的编解码器的4个字符代码。</li>
+<li>fps: 创建的视频流的帧速率</li>
+<li>frameSize: 视频帧的大小</li>
+<li>isColor: 可选参数。如果它不是0，编码器将期望并编码颜色帧，否则它将与灰度帧一起工作(该标志目前仅在Windows上受支持)</li>
+</ul>
+</li>
+<li>return：<ul>
+<li>返回videoWrite实例</li>
+</ul>
+</li>
+<li>note：<br>-fourcc编解码器类型应和文件存储路径中的扩展名一致。<a href="# cv2.VideoWriter_fourcc(c1,c2,c3,c4">详见</a>)</li>
+</ul>
+<h4 id="cv2-VideoWriter-write-image"><a href="#cv2-VideoWriter-write-image" class="headerlink" title="cv2.VideoWriter.write( image )"></a>cv2.VideoWriter.write( image )</h4><p>将指定的图像写入视频文件。<strong>image必须与初始化videowrite实例时指定的frame大小相同</strong>。</p>
+<ul>
+<li>arges：<ul>
+<li>image：写入的视频帧。一般来说，彩色图像应该是BGR格式的。</li>
+</ul>
+</li>
+<li>return：None</li>
+</ul>
+<h4 id="cv2-VideoWriter-fourcc-c1-c2-c3-c4"><a href="#cv2-VideoWriter-fourcc-c1-c2-c3-c4" class="headerlink" title="cv2.VideoWriter_fourcc( c1, c2, c3, c4    )"></a>cv2.VideoWriter_fourcc( c1, c2, c3, c4    )</h4><p>将4个字符连接到一个fourcc，用作videoWriter类构造函数或open()的fourcc参数</p>
+<ul>
+<li>return: fourcc code</li>
+</ul>
+<p>常用选项：</p>
+<ul>
+<li>cv2.VideoWrite_fourcc(‘I’,’4’,’2’,’0’): 该选项是一个未压缩的YUV颜色编码，是4:2:0色度子采样。这种编码具有很好的兼容性，但会产生较大文件，文件扩展名为.avi。</li>
+<li>cv2.VideoWrite_fourcc(‘P’,’I’,’M’,’1’): 该选项是MPEG-1编码类型，文件扩展名为.avi。</li>
+<li>cv2.VideoWrite_fourcc(‘X’,’V’,’I’,’D’): 该选项是MPEG-4编码类型，得到的视频文件大小较为平均，文件扩展名为.avi。</li>
+<li>cv2.VideoWrite_fourcc(‘F’,’L’,’V’,’1’): 该选项是一个flash视频，文件扩展名为.flv。</li>
+</ul>
+<h4 id="videoWriter类和videoCapture类一样具有open-、release-、isOpened-、set-、get-方法"><a href="#videoWriter类和videoCapture类一样具有open-、release-、isOpened-、set-、get-方法" class="headerlink" title="videoWriter类和videoCapture类一样具有open()、release()、isOpened()、set()、get()方法"></a>videoWriter类和videoCapture类一样具有open()、release()、isOpened()、set()、get()方法</h4><p><strong><em>以下代码：获取摄像头的帧，并自动保存视频文件</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment"># 构造videocapture类实例（不传递参数，使用open()方法进行初始化）</span></span><br><span class="line">cap = cv2.VideoCapture()</span><br><span class="line"><span class="comment"># 初始化videocapture类实例cap</span></span><br><span class="line">cap.open(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上面两句语句与cap = cv2.VideoCapture(0)效果一样</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置cap的属性   ????设置无效</span></span><br><span class="line">ret1 = cap.set(cv2.CAP_PROP_FRAME_WIDTH, <span class="number">200</span>)</span><br><span class="line">ret2 = cap.set(cv2.CAP_PROP_FRAME_HEIGHT, <span class="number">300</span>)</span><br><span class="line">print(ret1,ret2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取cap的属性</span></span><br><span class="line">frame_size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))</span><br><span class="line">fps = cap.get(cv2.CAP_PROP_FPS)  <span class="comment">#每秒30帧</span></span><br><span class="line">print(<span class="string">"frameSize:"</span>,frame_size,<span class="string">"fps:"</span>,fps)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造videowrite类实例，并传递参数进行初始化。</span></span><br><span class="line"><span class="comment"># 经测试，文件写入路径必须事先没有该文件</span></span><br><span class="line">writer = cv2.VideoWriter(<span class="string">"test_videowrite.avi"</span>, cv2.VideoWriter_fourcc(<span class="string">'I'</span>,<span class="string">'4'</span>,<span class="string">'2'</span>,<span class="string">'0'</span>), fps, frame_size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 视频时长10s</span></span><br><span class="line">videoTime = <span class="number">8</span> * fps - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span>(cap.isOpened() <span class="keyword">and</span> writer.isOpened() <span class="keyword">and</span> videoTime &gt; <span class="number">0</span>):</span><br><span class="line">    <span class="comment"># Capture frame-by-frame</span></span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    <span class="comment"># 测试属性设置是否有效</span></span><br><span class="line">    <span class="keyword">if</span> videoTime == <span class="number">8</span> * fps - <span class="number">1</span>:</span><br><span class="line">        print(<span class="string">"frame.shape"</span>,frame.shape)</span><br><span class="line">        cap_size = (cap.get(cv2.CAP_PROP_FRAME_WIDTH), cap.get(cv2.CAP_PROP_FRAME_HEIGHT))</span><br><span class="line">        print(<span class="string">"cap_size:"</span>,cap_size)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ret:</span><br><span class="line">        <span class="comment"># 将视频帧写入视频文件 </span></span><br><span class="line">        writer.write(frame)</span><br><span class="line">        <span class="comment"># Display the resulting frame</span></span><br><span class="line">        cv2.imshow(<span class="string">'camera'</span>,frame)</span><br><span class="line">        <span class="comment"># 延时1毫秒等待键盘输入，否则返回-1.该函数用于与窗口函数配套使用。</span></span><br><span class="line">        cv2.waitKey(<span class="number">1</span>)</span><br><span class="line">        videoTime -= <span class="number">1</span></span><br><span class="line">        </span><br><span class="line"><span class="comment"># When everything done, release the capture</span></span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frameSize: (640, 480) fps: 30.0</span><br><span class="line">frame.shape (480, 640, 3)</span><br><span class="line">cap_size: (640.0, 480.0)</span><br></pre></td></tr></table></figure>
+<h2 id="GUI窗口及鼠标事件"><a href="#GUI窗口及鼠标事件" class="headerlink" title="GUI窗口及鼠标事件"></a>GUI窗口及鼠标事件</h2><p>openCV的namedWindow()、imshow()和destroyWindow()函数允许指定窗口名来创建、显示和销毁窗口。<strong>任何窗口都可以通过waitKey()函数来获取键盘输入，通过setMouseCallback()函数来获取鼠标输入。</strong>waitKey()函数在介绍opencv显示图片函数imshow()时已经介绍.<br>​    </p>
+<h4 id="cv2-setMouseWindow"><a href="#cv2-setMouseWindow" class="headerlink" title="cv2.setMouseWindow()"></a>cv2.setMouseWindow()</h4><p>setMouseCallback()函数用来创建鼠标回调函数并与指定窗口进行绑定。实现窗口鼠标事件的格式：</p>
+<ul>
+<li>自定义鼠标回调函数有五个参数: <a href="https://docs.opencv.org/3.4.3/d7/dfc/group__highgui.html#gab7aed186e151d5222ef97192912127a4" target="_blank" rel="noopener">参考文档</a><ul>
+<li>event: 鼠标事件参数</li>
+<li>x, y : 鼠标光标所在位置坐标</li>
+<li>flags : 标志参数</li>
+<li>param： 可选参数</li>
+</ul>
+</li>
+</ul>
+<p>当鼠标光标置于指定窗口时，鼠标事件参数、光标位置参数及标志参数就会传递给响应函数，响应函数则会根据传进来参数，按照函数定义完成特定功能。</p>
+<ul>
+<li><strong>openCV不提供任何处理窗口事件的方法</strong>。例如，当单击窗口的关闭按钮时，并不能关闭应用程序。由于openCV有限的事件处理和GUI处理能力，常常将openCV集成到其他应用程序框架中。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment"># 定义鼠标事件响应函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">onMouseAction</span><span class="params">(event, x, y, flags, param)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="comment">#创建GUI窗口</span></span><br><span class="line">cv2.namedWindow(<span class="string">"window_name"</span>)</span><br><span class="line"><span class="comment"># 创建回调函数并和指定窗口绑定</span></span><br><span class="line">cv2.setMouseCallback(<span class="string">"window_name"</span>, onMouseCallback)</span><br><span class="line">cv2.destroyWindow(<span class="string">"window_name"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取鼠标回调事件参数</span></span><br><span class="line">events = [i <span class="keyword">for</span> i <span class="keyword">in</span> dir(cv2) <span class="keyword">if</span> <span class="string">'EVENT'</span> <span class="keyword">in</span> i]</span><br><span class="line"><span class="keyword">for</span> event <span class="keyword">in</span> events:</span><br><span class="line">    print( event )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">EVENT_FLAG_ALTKEY</span><br><span class="line">EVENT_FLAG_CTRLKEY</span><br><span class="line">EVENT_FLAG_LBUTTON</span><br><span class="line">EVENT_FLAG_MBUTTON</span><br><span class="line">EVENT_FLAG_RBUTTON</span><br><span class="line">EVENT_FLAG_SHIFTKEY</span><br><span class="line">EVENT_LBUTTONDBLCLK</span><br><span class="line">EVENT_LBUTTONDOWN</span><br><span class="line">EVENT_LBUTTONUP</span><br><span class="line">EVENT_MBUTTONDBLCLK</span><br><span class="line">EVENT_MBUTTONDOWN</span><br><span class="line">EVENT_MBUTTONUP</span><br><span class="line">EVENT_MOUSEHWHEEL</span><br><span class="line">EVENT_MOUSEMOVE</span><br><span class="line">EVENT_MOUSEWHEEL</span><br><span class="line">EVENT_RBUTTONDBLCLK</span><br><span class="line">EVENT_RBUTTONDOWN</span><br><span class="line">EVENT_RBUTTONUP</span><br></pre></td></tr></table></figure>
+<h3 id="利用鼠标回调函数和键盘输入函数实现实时拍照"><a href="#利用鼠标回调函数和键盘输入函数实现实时拍照" class="headerlink" title="利用鼠标回调函数和键盘输入函数实现实时拍照"></a>利用鼠标回调函数和键盘输入函数实现实时拍照</h3><p>通过videocapture获取摄像头的视频帧，并利用窗口函数实时显示出来；设置鼠标回调函数；最后实现当按下鼠标左键或键盘任意键时，保存该时刻照片。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment"># 定义鼠标回调函数</span></span><br><span class="line">clicked = <span class="literal">False</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">onMouse</span><span class="params">(event, x, y, falgs, param)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> clicked</span><br><span class="line">    <span class="comment">#print(clicked)</span></span><br><span class="line">    clicked = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">if</span> event == cv2.EVENT_LBUTTONDOWN:</span><br><span class="line">        clicked = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 创建GUI窗口</span></span><br><span class="line">cv2.namedWindow(<span class="string">"my camera"</span>)</span><br><span class="line"><span class="comment"># 将鼠标回调函数与窗口绑定</span></span><br><span class="line">cv2.setMouseCallback(<span class="string">"my camera"</span>, onMouse)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"按下鼠标左键或任意键盘按键（除esc键）拍照"</span>)</span><br><span class="line">ret, frame = cap.read()</span><br><span class="line"><span class="keyword">while</span> ret :</span><br><span class="line">    </span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    cv2.imshow(<span class="string">"my camera"</span>, frame)</span><br><span class="line">    k = cv2.waitKey(<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 如果按下esc键则退出循环</span></span><br><span class="line">    <span class="keyword">if</span> (k &amp; <span class="number">0xff</span>) == <span class="number">27</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> k != <span class="number">-1</span> <span class="keyword">or</span> clicked:</span><br><span class="line">        cv2.waitKey(<span class="number">2000</span>)</span><br><span class="line">        photo_filepath = str(datetime.datetime.now()) + <span class="string">".jpg"</span></span><br><span class="line">        flag = cv2.imwrite(photo_filepath, frame)</span><br><span class="line">        <span class="keyword">if</span> flag:</span><br><span class="line">            print(<span class="string">"picture is saved"</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 释放videocapture实例和窗口</span></span><br><span class="line">cv2.destroyWindow(<span class="string">"my camera"</span>)</span><br><span class="line">cap.release()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">按下鼠标左键或任意键盘按键（除esc键）拍照</span><br><span class="line">picture is saved</span><br><span class="line">picture is saved</span><br><span class="line">picture is saved</span><br><span class="line">picture is saved</span><br><span class="line">picture is saved</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我吃糖果！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/static/wx_reward_qrcode.png" alt="hliu 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/opencv/" rel="tag"># opencv</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/21/python序列/" rel="next" title="python序列模型">
+                <i class="fa fa-chevron-left"></i> python序列模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/21/python类/" rel="prev" title="python面向对象">
+                python面向对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+		<a href="/">
+	              <img class="site-author-image" itemprop="image" src="/static/avatar.png" alt="hliu">
+		</a>
+            
+              <p class="site-author-name" itemprop="name">hliu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/l-huan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/problemset/all/" title="力扣coding" target="_blank">力扣coding</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://language.chinadaily.com.cn/bbc/index.html" title="China daily" target="_blank">China daily</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://language.chinadaily.com.cn/audio_cd/" title="News audio" target="_blank">News audio</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tophub.today/" title="今日热榜" target="_blank">今日热榜</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1349292048&auto=1&height=66">
+	</iframe>	
+
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图像读写及窗口显示"><span class="nav-number">1.</span> <span class="nav-text">图像读写及窗口显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-imread"><span class="nav-number">1.0.1.</span> <span class="nav-text">cv2.imread()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-imwrite"><span class="nav-number">1.0.2.</span> <span class="nav-text">cv2.imwrite()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-imshow"><span class="nav-number">1.0.3.</span> <span class="nav-text">cv2.imshow()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-waitKey"><span class="nav-number">1.0.4.</span> <span class="nav-text">cv2.waitKey()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-destroyAllWindows"><span class="nav-number">1.0.5.</span> <span class="nav-text">cv2.destroyAllWindows()</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#视频文件读写及帧显示"><span class="nav-number">2.</span> <span class="nav-text">视频文件读写及帧显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VideoCapture类"><span class="nav-number">2.1.</span> <span class="nav-text">VideoCapture类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-cv2-VideoCapture-filepath-cv2-VideoCapture-filepath-apiPreference-cv2-VideoCapture-index"><span class="nav-number">2.1.1.</span> <span class="nav-text">cv2.VideoCapture()  cv2.VideoCapture(filepath) cv2.VideoCapture(filepath, apiPreference) cv2.VideoCapture(index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-release"><span class="nav-number">2.1.2.</span> <span class="nav-text">cv2.VideoCapture.release()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-open-filename-cv2-VideoCapture-open-filename-apiPreference-cv2-VideoCapture-open-index"><span class="nav-number">2.1.3.</span> <span class="nav-text">cv2.VideoCapture.open(filename)  cv2.VideoCapture.open(filename, apiPreference)  cv2.VideoCapture.open(index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-isOpened"><span class="nav-number">2.1.4.</span> <span class="nav-text">cv2.VideoCapture.isOpened()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-read"><span class="nav-number">2.1.5.</span> <span class="nav-text">cv2.VideoCapture.read()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-grab-和-cv2-VideoCapture-retrive"><span class="nav-number">2.1.6.</span> <span class="nav-text">cv2.VideoCapture.grab() 和 cv2.VideoCapture.retrive()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-get-propId"><span class="nav-number">2.1.7.</span> <span class="nav-text">cv2.VideoCapture.get(propId)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoCapture-set-propId-value"><span class="nav-number">2.1.8.</span> <span class="nav-text">cv2.VideoCapture.set(propId, value)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#videoWriter类"><span class="nav-number">2.2.</span> <span class="nav-text">videoWriter类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoWriter-cv2-VideoWriter-filename-fourcc-fps-frameSize-isColor-cv2-VideoWriter-filename-apiPreference-fourcc-fps-frameSize-isColor"><span class="nav-number">2.2.1.</span> <span class="nav-text">cv2.VideoWriter()   cv2.VideoWriter( filename, fourcc, fps, frameSize [, isColor] )  cv2.VideoWriter( filename, apiPreference, fourcc, fps, frameSize [, isColor] )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoWriter-write-image"><span class="nav-number">2.2.2.</span> <span class="nav-text">cv2.VideoWriter.write( image )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-VideoWriter-fourcc-c1-c2-c3-c4"><span class="nav-number">2.2.3.</span> <span class="nav-text">cv2.VideoWriter_fourcc( c1, c2, c3, c4    )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#videoWriter类和videoCapture类一样具有open-、release-、isOpened-、set-、get-方法"><span class="nav-number">2.2.4.</span> <span class="nav-text">videoWriter类和videoCapture类一样具有open()、release()、isOpened()、set()、get()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GUI窗口及鼠标事件"><span class="nav-number">3.</span> <span class="nav-text">GUI窗口及鼠标事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cv2-setMouseWindow"><span class="nav-number">3.0.1.</span> <span class="nav-text">cv2.setMouseWindow()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用鼠标回调函数和键盘输入函数实现实时拍照"><span class="nav-number">3.1.</span> <span class="nav-text">利用鼠标回调函数和键盘输入函数实现实时拍照</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hliu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">37k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点总阅读次数">37 mins.</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<div id="days"></div>
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("01/01/2019 15:13:14");//修改为自己的blog建站时间
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="本站已安全运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Th8K5PvGivXQdfi7j4yzHkc3-gzGzoHsz',
+        appKey: 'VI2vF8wNcUr5KFsoyCuQPNkG',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Th8K5PvGivXQdfi7j4yzHkc3-gzGzoHsz", "VI2vF8wNcUr5KFsoyCuQPNkG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
